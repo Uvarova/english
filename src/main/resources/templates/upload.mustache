@@ -1,0 +1,34 @@
+<html>
+<body>
+
+<a href="/"> <img src="images/home.jpg" height="80"/> home </a>
+<a href="/upload"> <img src="/images/upload.jpg" height="80"/> upload </a>
+<a href="/search"> <img src="/images/search.jpg" height="80" alt="search"/> search</a>
+<a href="/forum"> <img src="/images/forum.jpg" height="80" alt="forum"/> forum</a>
+<form action = "\logout" method="post">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <input type="submit" value="Sing out"/>
+</form>
+
+    <h2> Uploading... </h2>
+    <div>
+       <form method="post">
+            <input type="text" name="pic" placeholder="pic" />
+            <input type="text" name="sound" placeholder="sound"/>
+            <input type="text" name="tag" placeholder="тег"/>
+            <input type="text" name="title" placeholder="title"/>
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <button type="submit"> Ok </button>
+        </form>
+    </div>
+
+
+    <a href="/writeCookie" >Записать cookie</a>
+    <a href="/readCookie" >Прочитать cookie</a>
+    <a href="/readAllCookies" >Прочитать все cookies</a>
+
+
+
+
+</body>
+</html>

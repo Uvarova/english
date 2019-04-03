@@ -1,0 +1,23 @@
+<html>
+
+<body>
+
+
+<a href="/"> <img src="images/home.jpg" height="80"/> home </a>
+<a href="/upload"> <img src="/images/upload.jpg" height="80"/> upload </a>
+<a href="/search"> <img src="/images/search.jpg" height="80" alt="search"/> search</a>
+<a href="/forum"> <img src="/images/forum.jpg" height="80" alt="forum"/> forum</a>
+<form action = "\logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="submit" value="Sing out"/>
+</form>
+
+    <a href="/supply?tag=supply"> <img alt="logo" src="/images/supply.jpg" height= "200" width="200" />  </a>
+
+    <a href="/supply?tag=house"> <img alt="logo" src="/images/house.jpg" height= "200" width="200" />  </a>
+
+    <a href="/supply?tag=numbers"> <img alt="logo" src="/images/numbers.jpg" height= "200" width="200" />  </a>
+
+
+</body>
+</html>
