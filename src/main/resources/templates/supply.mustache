@@ -1,5 +1,9 @@
 <html>
+<head>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
 <body>
+<div class="inline">
 <a href="/"> <img src="images/home.jpg" height="80"/> home </a>
 <a href="/upload"> <img src="/images/upload.jpg" height="80"/> upload </a>
 <a href="/search"> <img src="/images/search.jpg" height="80" alt="search"/> search</a>
@@ -8,6 +12,7 @@
     <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
     <input type="submit" value="Sing out"/>
 </form>
+</div>
 <div>
     <br/>
     <br/>
@@ -15,10 +20,11 @@
 
 </div>
 
-
+<div class="inline">
 {{#subjects}}
 
-    <b><img src = {{pic}} height = "200" weight = "200"/></b>
+   <b><img src = {{pic}} height = "200" weight = "200"/></b>
+
     <form action="sound" method="post">
         <input type = "hidden" name="tag" value={{tag}}><br>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
@@ -27,5 +33,7 @@
     </form>
 
 {{/subjects}}
+</div>
+
 </body>
 </html>

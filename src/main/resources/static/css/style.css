@@ -1,0 +1,9 @@
+.cols {
+    white-space: nowrap;
+}
+.inline {
+    color: #FFEBCD;
+    text-decoration: none;
+    border-radius: 7px;
+    border: 3px solid;
+}
