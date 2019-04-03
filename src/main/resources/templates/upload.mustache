@@ -1,14 +1,29 @@
 <html>
+<head>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
 <body>
-
-<a href="/"> <img src="images/home.jpg" height="80"/> home </a>
-<a href="/upload"> <img src="/images/upload.jpg" height="80"/> upload </a>
-<a href="/search"> <img src="/images/search.jpg" height="80" alt="search"/> search</a>
-<a href="/forum"> <img src="/images/forum.jpg" height="80" alt="forum"/> forum</a>
-<form action = "\logout" method="post">
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-    <input type="submit" value="Sing out"/>
-</form>
+<div class="inline">
+    <div class="inline">
+        <a href="/"> <img src="images/home.jpg" height="80"/><br> home </a>
+    </div>
+    <div class="inline">
+        <a href="/upload"> <img src="/images/upload.jpg" height="80"/> <br>upload </a>
+    </div>
+    <div class="inline">
+        <a href="/search"> <img src="/images/search.jpg" height="80" alt="search"/> <br>search</a>
+    </div>
+    <div class="inline">
+        <a href="/forum"> <img src="/images/forum.jpg" height="80" alt="forum"/> <br>forum</a>
+    </div>
+    <div class="inline">
+        <img src="/images/login.jpg" height="80"/>
+        <form action = "\logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input type="submit" value="Sing out"/>
+        </form>
+    </div>
+</div>
 
     <h2> Uploading... </h2>
     <div>

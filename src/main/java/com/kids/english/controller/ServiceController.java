@@ -76,7 +76,7 @@ public class ServiceController {
         return "upload";
     }
 
-    @PostMapping("sound")
+    @GetMapping("sound")
     public String sound(@RequestParam(name = "title", required = false, defaultValue = "") String title,
                         @RequestParam(name = "tag", required = false, defaultValue = "") String tag, Map<String, Object> model){
         //PlaySound play = new PlaySound();
