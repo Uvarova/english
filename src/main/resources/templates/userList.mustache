@@ -19,31 +19,27 @@
     </div>
     <div class="inline">
         <img src="/images/login.jpg" height="80"/>
-        <form action = "\logout" method="post">
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <form action="\logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
             <input type="submit" value="Sing out"/>
         </form>
     </div>
 </div>
+<br></br>
+<!--{{#list users as user}}
+    <b>{{user.userName}}</b>
+    <b> {{role}}</b>
+<b> {{user.id}}</b>
+{{/list users as user}}-->
 
+{{#user}}
 <div>
-    <br></br>
-    <p> Enter your message </p>
-    <form method="post">
-        <input type="text" name="text" placeholder="text" />
-        <input type="text" name="tag" placeholder="tag"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <button type="submit">Ok</button>
-    </form>
+    <b>{{id}}</b>
+    <b>{{username}}</b>
+    <b>{{roles}}</b>
 </div>
+{{/user}}
 
- {{#messages}}
- <div>
-     <b>{{id}}</b>
-     <span>{{text}}</span>
-     <i>{{tag}}</i>
-     <b> {{authorName}}</b>
- </div>
- {{/messages}}
+
 </body>
 </html>

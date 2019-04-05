@@ -37,8 +37,6 @@ public class StudyController {
         Iterable<Subjects> subjects = subjectsRepo.findByTag(tag);
         model.put("subjects", subjects);
 
-        test t = new test();
-
         return "supply";
     }
 

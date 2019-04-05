@@ -85,6 +85,7 @@ public class ServiceController {
                         @RequestParam(name = "tag", required = false, defaultValue = "") String tag, Map<String, Object> model){
         //PlaySound play = new PlaySound();
         //play.playSound(sound);
+        //make sound from title of subject
         TextSpeech speak = new TextSpeech();
         try {
             speak.readWord(title);
