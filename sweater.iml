@@ -20,6 +20,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="en_us" level="application" />
+    <orderEntry type="library" name="freetts-jsapi10" level="application" />
+    <orderEntry type="library" name="freetts" level="application" />
+    <orderEntry type="library" name="mbrola" level="application" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.0.0.RELEASE" level="project" />
@@ -83,9 +87,6 @@
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:5.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.0.3.RELEASE" level="project" />
-    <orderEntry type="library" name="en_us" level="application" />
-    <orderEntry type="library" name="freetts-jsapi10" level="application" />
-    <orderEntry type="library" name="freetts" level="application" />
-    <orderEntry type="library" name="mbrola" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.2" level="project" />
   </component>
 </module>

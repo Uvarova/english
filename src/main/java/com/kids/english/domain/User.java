@@ -1,12 +1,18 @@
 package com.kids.english.domain;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
-
 
 @Entity
 @Table(name = "usr")
-public class User {
+@Getter
+@Setter
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,28 +25,29 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    public Long getId() {
-        return id;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public String getUsername() {
-        return username;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public boolean isEnabled() {
+        return isActive();
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
     }
 
     public boolean isActive() {
