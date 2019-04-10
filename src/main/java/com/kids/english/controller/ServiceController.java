@@ -13,8 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 public class ServiceController {
@@ -23,6 +27,8 @@ public class ServiceController {
     @Autowired
     private MessageRepo messageRepo;
 
+    //@Value( "?{upload.path}")
+    private String uploadPath = "D:/projects";
 
     @GetMapping("forum")
     public String searchMess(Map<String,Object> model) {
@@ -72,9 +78,25 @@ public class ServiceController {
     }
 
     @PostMapping("upload")
-    public String upload(@RequestParam String pic, @RequestParam String sound, @RequestParam String tag, @RequestParam String title, Map<String, Object> model){
+    public String upload(@RequestParam ("file") MultipartFile file, @RequestParam String pic,
+                         @RequestParam String sound,
+                         @RequestParam String tag,
+                         @RequestParam String title, Map<String, Object> model) throws IOException {
 
         Subjects sub = new Subjects(pic, sound, tag, title);
+        if (file != null && !file.getOriginalFilename().isEmpty()) {
+            File uploadDir = new File(uploadPath);
+
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+
+            String uuidFile = UUID.randomUUID().toString();
+            String resultFilename = uuidFile + "." + file.getOriginalFilename();
+
+            file.transferTo(new File(uploadPath + "/" + resultFilename));
+            sub.setFilename(resultFilename);
+        }
         subjectsRepo.save(sub);
 
         return "upload";

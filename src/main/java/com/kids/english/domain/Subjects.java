@@ -1,5 +1,6 @@
 package com.kids.english.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +21,7 @@ public class Subjects {
     private String sound;
     private String tag;
     private String title;
+    private String filename;
 
     public Subjects() {
     }
@@ -29,6 +31,10 @@ public class Subjects {
         this.sound = sound;
         this.tag = tag;
         this.title = title;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
 }
