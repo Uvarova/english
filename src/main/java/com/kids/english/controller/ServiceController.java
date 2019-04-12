@@ -27,8 +27,10 @@ public class ServiceController {
     @Autowired
     private MessageRepo messageRepo;
 
+    private String pic;
+
     //@Value( "?{upload.path}")
-    private String uploadPath = "D:/projects";
+    private String uploadPath = "D:/projects/english/src/main/resources/static/images";
 
     @GetMapping("forum")
     public String searchMess(Map<String,Object> model) {
@@ -78,12 +80,12 @@ public class ServiceController {
     }
 
     @PostMapping("upload")
-    public String upload(@RequestParam ("file") MultipartFile file, @RequestParam String pic,
+    public String upload(@RequestParam ("file") MultipartFile file,
                          @RequestParam String sound,
                          @RequestParam String tag,
                          @RequestParam String title, Map<String, Object> model) throws IOException {
 
-        Subjects sub = new Subjects(pic, sound, tag, title);
+
         if (file != null && !file.getOriginalFilename().isEmpty()) {
             File uploadDir = new File(uploadPath);
 
@@ -94,10 +96,15 @@ public class ServiceController {
             String uuidFile = UUID.randomUUID().toString();
             String resultFilename = uuidFile + "." + file.getOriginalFilename();
 
-            file.transferTo(new File(uploadPath + "/" + resultFilename));
+            //put to special folder, named by tag
+            pic = "images/" + tag + "/" + resultFilename;
+            Subjects sub = new Subjects(pic, sound, tag, title);
+
+            file.transferTo(new File(uploadPath +"/" + tag + "/" + resultFilename));
             sub.setFilename(resultFilename);
+            subjectsRepo.save(sub);
         }
-        subjectsRepo.save(sub);
+
 
         return "upload";
     }

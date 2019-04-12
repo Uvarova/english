@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
   //@Value( "?{upload.path}")
-  private String uploadPath = "D:/projects";
+  private String uploadPath = "D:/projects/english/src/main/resources/static/images";
 
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
