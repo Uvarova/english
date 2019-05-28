@@ -3,52 +3,66 @@
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-<div class="inline">
-    <div class="inline">
-        <a href="/"> <img src="images/home.jpg" height="80"/><br> home </a>
-    </div>
-    <div class="inline">
-        <a href="/upload"> <img src="/images/upload.jpg" height="80"/> <br>upload </a>
-    </div>
-    <div class="inline">
-        <a href="/search"> <img src="/images/search.jpg" height="80" alt="search"/> <br>search</a>
-    </div>
-    <div class="inline">
-        <a href="/forum"> <img src="/images/forum.jpg" height="80" alt="forum"/> <br>forum</a>
-    </div>
-    <div class="inline">
-        <img src="/images/login.jpg" height="80"/>
-        <form action = "\logout" method="post">
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-            <input type="submit" value="Sing out"/>
-        </form>
-    </div>
+
+<div class="top">
+
+        <div class="inline">
+            <div class="inline">
+                <a href="/"> <img src="images/home.jpg" height="80"/><br> home </a>
+            </div>
+            <div class="inline">
+                <a href="/upload"> <img src="/images/upload.jpg" height="80"/> <br>upload </a>
+            </div>
+            <div class="inline">
+                <a href="/search"> <img src="/images/search.jpg" height="80" alt="search"/> <br/>search</a>
+            </div>
+            <div class="inline">
+                <a href="/forum"> <img src="/images/forum.jpg" height="80" alt="forum"/> <br/>forum</a>
+            </div>
+            <div class="inline">
+                <img src="/images/login.jpg" height="80"/>
+                <form action = "\logout" method="post">
+                    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                    <input type="submit" value="Sing out"/>
+                </form>
+            </div>
+        </div>
+
+
+        <br/>
+        <br/>
+
 </div>
 
-<div>
-    <br/>
-    <br/>
+
+    <div class="body">
+
+        <div class="inline">
+            <script> var countLines = 0; </script>
+        {{#subjects}}
+           <div class="inline">
+           <b><img src = {{pic}} height = "200" weight = "200"/></b>
 
 
-</div>
+           <form action="sound" method="post">
+                <input type = "hidden" name="tag" value={{tag}}><br>
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                <input name="title" value={{title}}>
+                <input type="submit" value="play">
+            </form>
+            </div>
+            <!--<a href="/sound?{{title}}">{{title}}</a>-->
 
-<div class="inline">
-{{#subjects}}
-   <div class="inline">
-   <b><img src = {{pic}} height = "200" weight = "200"/></b>
-
-
-   <form action="sound" method="post">
-        <input type = "hidden" name="tag" value={{tag}}><br>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <input name="title" value={{title}}>
-        <input type="submit" value="play">
-    </form>
+            <script>
+                countLines ++;
+                if(countLines==3){
+                    document.write("<br>");
+                    countLines = 0;
+                }
+            </script>
+        {{/subjects}}
+        </div>
     </div>
-    <!--<a href="/sound?{{title}}">{{title}}</a>-->
-
-{{/subjects}}
 </div>
-
 </body>
 </html>
