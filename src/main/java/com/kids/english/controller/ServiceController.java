@@ -13,12 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Map;
-import java.util.UUID;
+
 
 @Controller
 public class ServiceController {
@@ -26,11 +23,6 @@ public class ServiceController {
     private SubjectsRepo subjectsRepo;
     @Autowired
     private MessageRepo messageRepo;
-
-    private String pic;
-
-    //@Value( "?{upload.path}")
-    private String uploadPath = "D:/projects/english/src/main/resources/static/images";
 
     @GetMapping("forum")
     public String searchMess(Map<String,Object> model) {
@@ -72,41 +64,6 @@ public class ServiceController {
         model.put("subjects", subjects);
 
         return "supply";
-    }
-
-    @GetMapping("upload")
-    public String upShow(){
-        return "upload";
-    }
-
-    @PostMapping("upload")
-    public String upload(@RequestParam ("file") MultipartFile file,
-                         @RequestParam String sound,
-                         @RequestParam String tag,
-                         @RequestParam String title, Map<String, Object> model) throws IOException {
-
-
-        if (file != null && !file.getOriginalFilename().isEmpty()) {
-            File uploadDir = new File(uploadPath);
-
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
-            String uuidFile = UUID.randomUUID().toString();
-            String resultFilename = uuidFile + "." + file.getOriginalFilename();
-
-            //put to special folder, named by tag
-            pic = "images/" + tag + "/" + resultFilename;
-            Subjects sub = new Subjects(pic, sound, tag, title);
-
-            file.transferTo(new File(uploadPath +"/" + tag + "/" + resultFilename));
-            sub.setFilename(resultFilename);
-            subjectsRepo.save(sub);
-        }
-
-
-        return "upload";
     }
 
     @PostMapping("sound")
