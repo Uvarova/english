@@ -1,4 +1,4 @@
-package com.kids.english;
+package com.kids.english.service;
 
 import javax.sound.sampled.*;
 import java.io.File;

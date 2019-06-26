@@ -1,5 +1,6 @@
 package com.kids.english.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 public class Subjects {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -26,9 +28,8 @@ public class Subjects {
     public Subjects() {
     }
 
-    public Subjects(String pic, String sound, String tag, String title) {
+    public Subjects(String pic, String tag, String title) {
         this.pic = pic;
-        this.sound = sound;
         this.tag = tag;
         this.title = title;
     }
