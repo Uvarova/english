@@ -1,7 +1,6 @@
 package com.kids.english.controller;
 
 
-import com.kids.english.TextSpeech;
 import com.kids.english.domain.Message;
 import com.kids.english.domain.Subjects;
 import com.kids.english.domain.User;
@@ -12,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
@@ -23,6 +23,16 @@ public class ServiceController {
     private SubjectsRepo subjectsRepo;
     @Autowired
     private MessageRepo messageRepo;
+
+    @GetMapping("/")
+    public String greeting() {
+        return "main";
+    }
+
+    @RequestMapping("/main")
+    public String main() {
+        return "main";
+    }
 
     @GetMapping("forum")
     public String searchMess(Map<String,Object> model) {
@@ -66,21 +76,5 @@ public class ServiceController {
         return "supply";
     }
 
-    @PostMapping("sound")
-    public String sound(@RequestParam(name = "title", required = false, defaultValue = "") String title,
-                        @RequestParam(name = "tag", required = false, defaultValue = "") String tag, Map<String, Object> model){
-        //PlaySound play = new PlaySound();
-        //play.playSound(sound);
-        //make sound from title of subject
-        TextSpeech speak = new TextSpeech();
-        try {
-            speak.readWord(title);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Iterable<Subjects> subjects = subjectsRepo.findByTag(tag);
-        model.put("subjects", subjects);
-        return "/supply";
-    }
 }
 

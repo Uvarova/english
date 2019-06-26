@@ -1,44 +1,35 @@
 package com.kids.english.controller;
 
-import com.kids.english.domain.Role;
 import com.kids.english.domain.User;
-import com.kids.english.repos.UserRepo;
+import com.kids.english.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Collections;
 import java.util.Map;
 
 @Controller
 public class RegistrationController {
-        @Autowired
-        private UserRepo userRepo;
 
         @Autowired
-        private PasswordEncoder passwordEncoder;
+        private UserService userService;
 
         @GetMapping("/registration")
-        public String registration() {
+        public String registration(Map<String,Object> map) {
+            map.put("message","");
             return "registration";
         }
 
         @PostMapping("/registration")
-        public String addUser(User user, Map<String, Object> model) {
-            User userFromDb = userRepo.findByUsername(user.getUsername());
+        public String addUser(User user, Map<String, Object> map) {
 
-            if (userFromDb != null) {
-                model.put("message", "User exists!");
+            if (userService.findByUsername(user) != null) {
+                map.put("message", "User exists!");
                 return "registration";
             }
 
-            user.setActive(true);
-            user.setRoles(Collections.singleton(Role.USER));
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            userRepo.save(user);
-
+            userService.save(user);
             return "redirect:/login";
         }
 }

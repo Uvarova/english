@@ -1,20 +1,20 @@
 <html>
 <head>
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="inline">
     <div class="inline">
-        <a href="/"> <img src="images/home.jpg" height="80"/><br> home </a>
+        <a href="/"> <img src="images/home.jpg" height="80"/><br/> home </a>
     </div>
     <div class="inline">
-        <a href="/upload"> <img src="/images/upload.jpg" height="80"/> <br>upload </a>
+        <a href="/upload"> <img src="/images/upload.jpg" height="80"/> <br/>upload </a>
     </div>
     <div class="inline">
-        <a href="/search"> <img src="/images/search.jpg" height="80" alt="search"/> <br>search</a>
+        <a href="/search"> <img src="/images/search.jpg" height="80" alt="search"/> <br/>search</a>
     </div>
     <div class="inline">
-        <a href="/forum"> <img src="/images/forum.jpg" height="80" alt="forum"/> <br>forum</a>
+        <a href="/forum"> <img src="/images/forum.jpg" height="80" alt="forum"/> <br/>forum</a>
     </div>
     <div class="inline">
         <img src="/images/login.jpg" height="80"/>
@@ -25,24 +25,17 @@
     </div>
 </div>
 
-    <h2> Uploading... </h2>
+    <h2> Uploading... {{result}}</h2>
     <h3> the "tag" must to exist </h3>
     <div>
        <form method="post" enctype="multipart/form-data">
             <input type="file" name="file" />
-            <input type="text" name="sound" placeholder="sound"/>
-            <input type="text" name="tag" placeholder="тег"/>
+            <input type="text" name="tag" placeholder="tag"/>
             <input type="text" name="title" placeholder="title"/>
             <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
             <button type="submit"> Ok </button>
         </form>
     </div>
-
-
-    <a href="/writeCookie" >Записать cookie</a>
-    <a href="/readCookie" >Прочитать cookie</a>
-    <a href="/readAllCookies" >Прочитать все cookies</a>
-
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.kids.english;
+package com.kids.english.service;
 
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
@@ -21,7 +21,7 @@ public class TextSpeech {
         this.word = word;
     }
 
-    public void readWord(String word) throws Exception {
+    public void readWord(String word){
         Voice voice;
         VoiceManager vm = VoiceManager.getInstance();
         voice = vm.getVoice(VOICENAME);
