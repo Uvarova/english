@@ -1,4 +1,4 @@
-package com.kids.english.service;
+package com.kids.english.service.user;
 
 import com.kids.english.domain.Role;
 import com.kids.english.domain.User;

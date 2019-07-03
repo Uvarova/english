@@ -1,8 +1,7 @@
 package com.kids.english.controller;
 
 import com.kids.english.domain.User;
-import com.kids.english.service.UserService;
-import com.kids.english.service.user.MailSender;
+import com.kids.english.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
