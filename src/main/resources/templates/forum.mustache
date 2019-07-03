@@ -29,8 +29,15 @@
 <div>
     <br></br>
     <p> Enter your message </p>
-    <form method="post">
+    <form action="/forum" method="post">
         <input type="text" name="text" placeholder="text" />
+        <input type="text" name="tag" placeholder="tag"/>
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Ok</button>
+    </form>
+
+    <p> find by tag </p>
+    <form action="/findmessage" method="post">
         <input type="text" name="tag" placeholder="tag"/>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
         <button type="submit">Ok</button>

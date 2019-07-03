@@ -1,6 +1,6 @@
 package com.kids.english.config;
 
-import com.kids.english.service.UserService;
+import com.kids.english.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/registration", "/static/**", "/activate/*").permitAll()
+                .antMatchers("/login","/registration", "/static/**", "/activate/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                     .formLogin()

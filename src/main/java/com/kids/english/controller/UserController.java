@@ -2,7 +2,7 @@ package com.kids.english.controller;
 
 import com.kids.english.domain.Role;
 import com.kids.english.domain.User;
-import com.kids.english.service.UserService;
+import com.kids.english.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
