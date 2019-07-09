@@ -1,9 +1,14 @@
 package com.kids.english.service.user;
 
+/*
+ * created by ellen
+ * created on 11.05.2019
+ * class created for project english
+ */
+
 import com.kids.english.domain.Role;
 import com.kids.english.domain.User;
 import com.kids.english.repos.UserRepo;
-import com.kids.english.service.user.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -2,10 +2,13 @@ package com.kids.english.service;
 
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
+import org.springframework.stereotype.Service;
 /*
 special class for translate text to speech
 to download https://sourceforge.net/projects/freetts/files/latest/download
  */
+
+@Service
 public class TextSpeech {
 
     private static final String VOICENAME = "kevin16";

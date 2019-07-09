@@ -7,7 +7,7 @@ package com.kids.english.controller;
 
 import com.kids.english.domain.Message;
 import com.kids.english.domain.User;
-import com.kids.english.service.forum.MessageService;
+import com.kids.english.service.message.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
