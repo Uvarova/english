@@ -1,4 +1,4 @@
-package com.kids.english.service.forum;
+package com.kids.english.service.message;
 /*
  * created by ellen
  * created on 03.07.2019

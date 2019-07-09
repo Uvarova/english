@@ -1,4 +1,4 @@
-package com.kids.english.service;
+package com.kids.english.service.subject;
 /*
  * created by ellen
  * created on 26.06.2019

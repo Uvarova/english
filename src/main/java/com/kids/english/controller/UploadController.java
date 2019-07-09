@@ -5,7 +5,7 @@ package com.kids.english.controller;
  * class created for project english
  */
 
-import com.kids.english.service.UploadService;
+import com.kids.english.service.subject.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
