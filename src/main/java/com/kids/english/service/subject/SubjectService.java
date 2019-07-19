@@ -5,7 +5,7 @@ package com.kids.english.service.subject;
  * class created for project english
  */
 
-import com.kids.english.domain.Subjects;
+import com.kids.english.entity.Subjects;
 
 public interface SubjectService {
     Iterable<Subjects> findByTag(String tag);

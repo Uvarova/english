@@ -5,7 +5,7 @@ package com.kids.english.service.message;
  * class created for project english
  */
 
-import com.kids.english.domain.Message;
+import com.kids.english.entity.Message;
 import com.kids.english.repos.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

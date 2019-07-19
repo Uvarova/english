@@ -5,7 +5,7 @@ package com.kids.english.service.subject;
  * class created for project sweater
  */
 
-import com.kids.english.domain.Subjects;
+import com.kids.english.entity.Subjects;
 import com.kids.english.repos.SubjectsRepo;
 import com.kids.english.util.Constans;
 import org.springframework.beans.factory.annotation.Autowired;
