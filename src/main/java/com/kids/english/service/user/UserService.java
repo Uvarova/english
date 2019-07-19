@@ -6,9 +6,11 @@ package com.kids.english.service.user;
  * class created for project english
  */
 
-import com.kids.english.domain.Role;
-import com.kids.english.domain.User;
+import com.kids.english.entity.Role;
+import com.kids.english.entity.User;
 import com.kids.english.repos.UserRepo;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,6 +23,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;

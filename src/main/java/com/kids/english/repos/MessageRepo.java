@@ -1,6 +1,6 @@
 package com.kids.english.repos;
 
-import com.kids.english.domain.Message;
+import com.kids.english.entity.Message;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

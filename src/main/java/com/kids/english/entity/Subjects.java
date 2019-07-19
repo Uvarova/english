@@ -1,7 +1,6 @@
-package com.kids.english.domain;
+package com.kids.english.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

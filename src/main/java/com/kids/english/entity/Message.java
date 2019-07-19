@@ -1,4 +1,4 @@
-package com.kids.english.domain;
+package com.kids.english.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

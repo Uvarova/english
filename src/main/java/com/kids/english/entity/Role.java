@@ -1,4 +1,4 @@
-package com.kids.english.domain;
+package com.kids.english.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 

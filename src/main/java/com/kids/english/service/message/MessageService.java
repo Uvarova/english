@@ -5,7 +5,7 @@ package com.kids.english.service.message;
  * class created for project english
  */
 
-import com.kids.english.domain.Message;
+import com.kids.english.entity.Message;
 
 public interface MessageService {
     Iterable<Message> findByTag(String tag);

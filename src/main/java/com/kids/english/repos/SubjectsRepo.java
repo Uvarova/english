@@ -1,6 +1,6 @@
 package com.kids.english.repos;
 
-import com.kids.english.domain.Subjects;
+import com.kids.english.entity.Subjects;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

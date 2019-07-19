@@ -5,8 +5,8 @@ package com.kids.english.controller;
  * class created for project english
  */
 
-import com.kids.english.domain.Message;
-import com.kids.english.domain.User;
+import com.kids.english.entity.Message;
+import com.kids.english.entity.User;
 import com.kids.english.service.message.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
