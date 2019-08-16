@@ -10,5 +10,5 @@ import com.kids.english.entity.Message;
 public interface MessageService {
     Iterable<Message> findByTag(String tag);
     Iterable<Message> findAll();
-    void saveMessage(Message message);
+    String saveMessage(Message message);
 }

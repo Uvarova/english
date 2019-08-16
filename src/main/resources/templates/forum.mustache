@@ -29,11 +29,12 @@
 <div>
     <br></br>
     <p> Enter your message </p>
-    <form action="/forum" method="post">
+    <form action="/savemessage" method="post">
         <input type="text" name="text" placeholder="text" />
         <input type="text" name="tag" placeholder="tag"/>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
         <button type="submit">Ok</button>
+        {{spam}}
     </form>
 
     <p> find by tag </p>

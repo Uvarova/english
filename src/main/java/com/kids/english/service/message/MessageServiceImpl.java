@@ -6,23 +6,29 @@ package com.kids.english.service.message;
  */
 
 import com.kids.english.entity.Message;
+import com.kids.english.entity.User;
 import com.kids.english.repos.MessageRepo;
+import com.kids.english.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MessageServiceImpl implements MessageService {
-   @Autowired
-   private MessageRepo messageRepo;
-   private Iterable<Message> messages;
+    @Autowired
+    private MessageRepo messageRepo;
+    @Autowired
+    private UserRepo userRepo;
+    @Autowired
+    private SpamAnalyzer spamAnalyzer;
+    private Iterable<Message> messages;
 
-   @Override
+    @Override
     public Iterable<Message> findByTag(String tag) {
-       if (tag.isEmpty()) {
-           messages = messageRepo.findAll();
-       } else {
-           messages = messageRepo.findByTag(tag);
-       }
+        if (tag.isEmpty()) {
+            messages = messageRepo.findAll();
+        } else {
+            messages = messageRepo.findByTag(tag);
+        }
         return messages;
     }
 
@@ -32,7 +38,16 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public void saveMessage(Message message) {
-        messageRepo.save(message);
+    public String saveMessage(Message message) {
+        String spam = "";
+        spam = spamAnalyzer.tooShortOrTooLongMessage(message);
+        if (spam.length() < 1) {
+            messageRepo.save(message);
+        }else{
+            User user = message.getAuthor();
+            user.setCountOfSpam(user.getCountOfSpam()+1);
+            userRepo.save(user);
+        }
+        return spam;
     }
 }

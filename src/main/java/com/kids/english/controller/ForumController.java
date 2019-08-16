@@ -13,6 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
@@ -21,26 +22,28 @@ import java.util.Map;
 public class ForumController {
     @Autowired
     private MessageService messageService;
+    private String spam = "";
 
-    @GetMapping("forum")
+    @RequestMapping("/forum")
     public String allMessages(Map<String,Object> model) {
         model.put("messages", messageService.findAll());
-        return "forum";
+        model.put("spam",spam);
+        return "/forum";
     }
 
     @PostMapping("/findmessage")
     public String findMessage(@RequestParam(name = "tag", required = false, defaultValue = "") String tag, Map<String, Object> model) {
         model.put("messages",messageService.findByTag(tag));
-        return "forum";
+        model.put("spam","");
+        return "/forum";
     }
 
-    @PostMapping("forum")
+    @PostMapping("/savemessage")
     public String sendMess(@AuthenticationPrincipal User user,
                            @RequestParam(name = "text", required = false, defaultValue = "") String text,
                            @RequestParam(name = "tag", required = false, defaultValue = "") String tag, Map<String, Object> model) {
         Message message = new Message(text,tag,user);
-        messageService.saveMessage(message);
-        allMessages(model);
-        return "forum";
+        spam = messageService.saveMessage(message);
+        return "redirect:/forum";
     }
 }
