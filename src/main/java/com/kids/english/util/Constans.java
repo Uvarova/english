@@ -8,4 +8,6 @@ package com.kids.english.util;
 public class Constans {
     public static final String UPLOADPATH = "D:/projects/english/src/main/resources/static/images";
     public static final String SUBJECTSTAG = "supply";
+    public static final short minLengthForMessage = 10;
+    public static final short maxLengthFprMessage = 500;
 }
