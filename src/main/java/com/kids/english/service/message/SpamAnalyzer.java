@@ -9,4 +9,5 @@ import com.kids.english.entity.Message;
 
 public interface SpamAnalyzer {
     String tooShortOrTooLongMessage(Message message);
+    boolean messageContainsSpam(Message message);
 }

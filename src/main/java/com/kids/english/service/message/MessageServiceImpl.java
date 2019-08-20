@@ -41,9 +41,10 @@ public class MessageServiceImpl implements MessageService {
     public String saveMessage(Message message) {
         String spam = "";
         spam = spamAnalyzer.tooShortOrTooLongMessage(message);
-        if (spam.length() < 1) {
+        if (spam.length() < 1 && !spamAnalyzer.messageContainsSpam(message)) {
             messageRepo.save(message);
         }else{
+            spam = "Your message can't be saved! It contains deprecated words. " + spam;
             User user = message.getAuthor();
             user.setCountOfSpam(user.getCountOfSpam()+1);
             userRepo.save(user);

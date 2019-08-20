@@ -6,13 +6,19 @@ package com.kids.english.service.message;
  */
 
 import com.kids.english.entity.Message;
+import com.kids.english.repos.SpamRepo;
 import com.kids.english.util.Constans;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.regex.Pattern;
 
 @Service
 public class SpamAnalyzerImpl implements SpamAnalyzer {
 
     private String spam = "";
+    @Autowired
+    private SpamRepo spamRepo;
 
     @Override
     public String tooShortOrTooLongMessage(Message message) {
@@ -21,5 +27,17 @@ public class SpamAnalyzerImpl implements SpamAnalyzer {
             spam = " The message is too short or too long";
         }
         return spam;
+    }
+
+    @Override
+    public boolean messageContainsSpam(Message message) {
+        Pattern pattern = Pattern.compile("-|:|/|, | ");
+        String [] messageWords = pattern.split(message.getText());
+        for (String next:messageWords) {
+            if (!spamRepo.findDistinctByWord(next).isEmpty())
+                return true;
+        }
+        return false;
+
     }
 }
