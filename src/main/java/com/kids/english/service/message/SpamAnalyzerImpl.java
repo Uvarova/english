@@ -23,7 +23,7 @@ public class SpamAnalyzerImpl implements SpamAnalyzer {
     @Override
     public String tooShortOrTooLongMessage(Message message) {
         spam = "";
-        if (message.getText().length() < Constans.minLengthForMessage || message.getText().length() > Constans.maxLengthFprMessage) {
+        if (message.getText().length() < Constans.MIN_LENGTH_FOR_MESSAGE || message.getText().length() > Constans.MAX_LENGTH_FOR_MESSAGE) {
             spam = " The message is too short or too long";
         }
         return spam;
