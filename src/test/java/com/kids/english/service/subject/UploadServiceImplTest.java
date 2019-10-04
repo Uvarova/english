@@ -11,7 +11,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import static org.mockito.Mockito.when;
@@ -28,7 +27,7 @@ public class UploadServiceImplTest {
     @Mock
     private SubjectsRepo subjectsRepo;
 
-    private MultipartFile multipartFileEmpty, multipartFile;
+    private MultipartFile multipartFileNull, multipartFile;
     private Subjects subjects;
 
     @Before
@@ -40,13 +39,14 @@ public class UploadServiceImplTest {
 
     @Test
     public void upload(){
-        Assert.assertEquals(uploadServiceImpl.upload("title", "tag", multipartFileEmpty), " ");
+        Assert.assertEquals(uploadServiceImpl.upload("title", "tag", multipartFileNull), " ");
         when(subjectsRepo.save(subjects)).thenReturn(subjects);
         Assert.assertEquals(uploadServiceImpl.upload("title", "tag", multipartFile), "ok");
     }
 
     @Test
     public void createUniqueName() {
-        Assert.assertNotEquals(uploadServiceImpl.createUniqueName("new"),uploadServiceImpl.createUniqueName("new"));
+        Assert.assertNotEquals(uploadServiceImpl.createUniqueName(multipartFile.getOriginalFilename()),
+                                uploadServiceImpl.createUniqueName(multipartFile.getOriginalFilename()));
     }
 }
